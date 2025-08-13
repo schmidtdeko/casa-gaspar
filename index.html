@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oportunidade incrível | Imóvel em Gaspar, SC</title>
+    <title>Viva a História, Construa o Futuro | Imóvel em Gaspar, SC</title>
     <meta name="description" content="Explore uma oportunidade única em Gaspar através de uma experiência interativa. Um imóvel com residência e ponto comercial, cheio de história e potencial.">
 
     <!-- Tailwind CSS -->
@@ -81,6 +81,9 @@
          .header-scrolled .nav-link:hover {
             color: #198754; /* text-green-600 */
         }
+        .header-scrolled .mobile-menu-button svg {
+            color: #374151;
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -94,15 +97,30 @@
 
     <!-- CABEÇALHO -->
     <header id="header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300">
-        <nav class="container mx-auto px-6 py-5 flex justify-end items-center">
-            <div class="hidden md:flex items-center space-x-8">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+             <div class="font-serif text-2xl font-bold text-white transition-colors" id="header-logo">
+                <a href="#">Imóvel Gaspar</a>
+            </div>
+            <div class="hidden lg:flex items-center space-x-8">
                 <a href="#tour" class="nav-link text-white opacity-80 hover:opacity-100 font-medium transition-colors">Tour Interativo</a>
                 <a href="#legado" class="nav-link text-white opacity-80 hover:opacity-100 font-medium transition-colors">O Legado</a>
                 <a href="#contato" class="bg-white text-gray-800 font-bold py-2 px-6 rounded-full hover:bg-gray-200 transition-all transform hover:scale-105">
                     Agendar Visita
                 </a>
             </div>
+            <!-- Botão do Menu Mobile -->
+            <div class="lg:hidden">
+                <button id="mobile-menu-button" class="mobile-menu-button focus:outline-none">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
         </nav>
+        <!-- Painel do Menu Mobile -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-lg">
+            <a href="#tour" class="block text-gray-700 hover:bg-gray-100 py-3 px-6">Tour Interativo</a>
+            <a href="#legado" class="block text-gray-700 hover:bg-gray-100 py-3 px-6">O Legado</a>
+            <a href="#contato" class="block text-gray-700 hover:bg-gray-100 py-3 px-6">Contato</a>
+        </div>
     </header>
 
     <main>
@@ -126,12 +144,12 @@
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">Explore Cada Ambiente</h2>
-                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Selecione um cômodo no menu à esquerda para ver a galeria de fotos e os detalhes.</p>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Selecione um cômodo no menu para ver a galeria de fotos e os detalhes.</p>
                 </div>
 
                 <div class="flex flex-col lg:flex-row gap-10 lg:gap-16">
-                    <!-- Coluna do Menu de Ambientes -->
-                    <div class="w-full lg:w-1/3">
+                    <!-- Coluna do Menu de Ambientes (Desktop) -->
+                    <div class="w-full lg:w-1/3 hidden lg:block">
                         <div class="sticky top-24">
                             <h3 class="font-bold text-xl mb-4 text-gray-700">Navegue pelos Ambientes</h3>
                             <ul id="room-menu" class="space-y-2">
@@ -142,6 +160,14 @@
                     
                     <!-- Coluna da Galeria e Detalhes -->
                     <div class="w-full lg:w-2/3">
+                        <!-- Menu Dropdown (Mobile) -->
+                        <div class="lg:hidden mb-8">
+                             <label for="room-select" class="font-bold text-xl mb-2 text-gray-700 block">Navegue pelos Ambientes</label>
+                             <select id="room-select" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                                <!-- Opções do select serão geradas pelo JS -->
+                             </select>
+                        </div>
+
                         <div id="gallery-area" class="bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200 min-h-[500px] flex flex-col">
                             <div id="gallery-placeholder" class="text-center m-auto">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-gray-400 mb-4"><path d="M2.5 7.5L5 9.5L7.5 7.5"/><path d="M2.5 16.5L5 18.5L7.5 16.5"/><path d="M10 5.5v13"/><path d="M16.5 2.5L14.5 5L16.5 7.5"/><path d="M16.5 16.5L14.5 19L16.5 21.5"/><path d="M21.5 7.5L19 9.5L16.5 7.5"/><path d="M21.5 16.5L19 18.5L16.5 16.5"/></svg>
@@ -150,7 +176,7 @@
                             </div>
                             <div id="gallery-content" class="hidden flex-grow flex-col">
                                 <!-- Imagem Principal -->
-                                <img id="main-image" src="" alt="Foto do ambiente selecionado" class="w-full h-80 object-cover rounded-lg mb-4">
+                                <img id="main-image" src="" alt="Foto do ambiente selecionado" class="w-full h-64 md:h-80 object-cover rounded-lg mb-4">
                                 <!-- Miniaturas -->
                                 <div id="thumbnail-container" class="flex-grow flex items-center gap-3 overflow-x-auto pb-2">
                                     <!-- Miniaturas geradas pelo JS -->
@@ -206,12 +232,24 @@
         document.addEventListener('DOMContentLoaded', function() {
             // --- LÓGICA DO HEADER COM SCROLL ---
             const header = document.getElementById('header');
+            const headerLogo = document.getElementById('header-logo');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {
                     header.classList.add('header-scrolled');
+                    headerLogo.classList.remove('text-white');
+                    headerLogo.classList.add('text-gray-800');
                 } else {
                     header.classList.remove('header-scrolled');
+                    headerLogo.classList.add('text-white');
+                    headerLogo.classList.remove('text-gray-800');
                 }
+            });
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
             });
 
             // --- BANCO DE DADOS DOS CÔMODOS E FOTOS ---
@@ -311,6 +349,7 @@
 
             // --- LÓGICA DA GALERIA INTERATIVA ---
             const roomMenu = document.getElementById('room-menu');
+            const roomSelect = document.getElementById('room-select');
             const galleryPlaceholder = document.getElementById('gallery-placeholder');
             const galleryContent = document.getElementById('gallery-content');
             const mainImage = document.getElementById('main-image');
@@ -318,56 +357,75 @@
             const roomTitle = document.getElementById('room-title');
             const roomDescription = document.getElementById('room-description');
 
-            // Popula o menu de ambientes
+            function updateGallery(roomId) {
+                const roomData = roomsData[roomId];
+                if (!roomData) return;
+
+                // Mostra o conteúdo da galeria
+                galleryPlaceholder.classList.add('hidden');
+                galleryContent.classList.remove('hidden');
+                galleryContent.classList.add('flex');
+
+                // Atualiza o título e a descrição
+                roomTitle.textContent = roomData.title;
+                roomDescription.textContent = roomData.description;
+
+                // Atualiza a imagem principal
+                mainImage.src = roomData.images[0];
+                mainImage.alt = `Foto principal de ${roomData.title}`;
+
+                // Popula as miniaturas
+                thumbnailContainer.innerHTML = '';
+                roomData.images.forEach((imgSrc, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = imgSrc;
+                    thumb.alt = `Miniatura ${index + 1} de ${roomData.title}`;
+                    thumb.className = 'thumbnail h-16 w-auto flex-shrink-0';
+                    if (index === 0) {
+                        thumb.classList.add('active');
+                    }
+                    thumb.dataset.index = index;
+                    thumbnailContainer.appendChild(thumb);
+                });
+            }
+
+            // Popula os menus (Desktop e Mobile)
             Object.keys(roomsData).forEach(roomId => {
                 const room = roomsData[roomId];
+                // Menu Desktop
                 const li = document.createElement('li');
                 li.textContent = room.title;
                 li.className = 'room-menu-item';
                 li.dataset.roomId = roomId;
                 roomMenu.appendChild(li);
+                // Menu Mobile
+                const option = document.createElement('option');
+                option.value = roomId;
+                option.textContent = room.title;
+                roomSelect.appendChild(option);
             });
 
-            // Adiciona o listener de evento ao menu
+            // Listener para o menu desktop
             roomMenu.addEventListener('click', (e) => {
                 if (e.target && e.target.matches('li.room-menu-item')) {
                     const roomId = e.target.dataset.roomId;
-                    const roomData = roomsData[roomId];
-                    
-                    // Atualiza o estado ativo do menu
                     document.querySelectorAll('.room-menu-item').forEach(item => item.classList.remove('active'));
                     e.target.classList.add('active');
-
-                    // Mostra o conteúdo da galeria
-                    galleryPlaceholder.classList.add('hidden');
-                    galleryContent.classList.remove('hidden');
-                    galleryContent.classList.add('flex');
-
-                    // Atualiza o título e a descrição
-                    roomTitle.textContent = roomData.title;
-                    roomDescription.textContent = roomData.description;
-
-                    // Atualiza a imagem principal
-                    mainImage.src = roomData.images[0];
-                    mainImage.alt = `Foto principal de ${roomData.title}`;
-
-                    // Popula as miniaturas
-                    thumbnailContainer.innerHTML = '';
-                    roomData.images.forEach((imgSrc, index) => {
-                        const thumb = document.createElement('img');
-                        thumb.src = imgSrc;
-                        thumb.alt = `Miniatura ${index + 1} de ${roomData.title}`;
-                        thumb.className = 'thumbnail h-16 w-auto flex-shrink-0';
-                        if (index === 0) {
-                            thumb.classList.add('active');
-                        }
-                        thumb.dataset.index = index;
-                        thumbnailContainer.appendChild(thumb);
-                    });
+                    roomSelect.value = roomId; // Sincroniza com o select
+                    updateGallery(roomId);
                 }
             });
+            
+            // Listener para o select mobile
+            roomSelect.addEventListener('change', (e) => {
+                 const roomId = e.target.value;
+                 document.querySelectorAll('.room-menu-item').forEach(item => {
+                     item.classList.toggle('active', item.dataset.roomId === roomId);
+                 });
+                 updateGallery(roomId);
+            });
 
-            // Adiciona o listener de evento ao container de miniaturas
+            // Listener para as miniaturas
             thumbnailContainer.addEventListener('click', (e) => {
                 if (e.target && e.target.matches('img.thumbnail')) {
                     const activeMenuItem = document.querySelector('.room-menu-item.active');
@@ -377,10 +435,7 @@
                     const roomData = roomsData[roomId];
                     const index = parseInt(e.target.dataset.index, 10);
 
-                    // Atualiza a imagem principal
                     mainImage.src = roomData.images[index];
-
-                    // Atualiza o estado ativo da miniatura
                     thumbnailContainer.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
                     e.target.classList.add('active');
                 }
