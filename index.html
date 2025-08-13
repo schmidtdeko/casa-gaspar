@@ -84,6 +84,11 @@
         .header-scrolled .mobile-menu-button svg {
             color: #374151;
         }
+
+        /* Adiciona um cursor de ponteiro na imagem principal para indicar que é clicável */
+        #main-image {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -144,7 +149,7 @@
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">Explore Cada Ambiente</h2>
-                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Selecione um cômodo no menu para ver a galeria de fotos e os detalhes.</p>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Selecione um cômodo no menu para ver a galeria e clique na foto principal para expandir.</p>
                 </div>
 
                 <div class="flex flex-col lg:flex-row gap-10 lg:gap-16">
@@ -176,7 +181,7 @@
                             </div>
                             <div id="gallery-content" class="hidden flex-grow flex-col">
                                 <!-- Imagem Principal -->
-                                <img id="main-image" src="" alt="Foto do ambiente selecionado" class="w-full h-64 md:h-80 object-cover rounded-lg mb-4">
+                                <img id="main-image" src="" alt="Foto do ambiente selecionado" class="w-full h-80 object-cover rounded-lg mb-4 transition-transform hover:scale-105">
                                 <!-- Miniaturas -->
                                 <div id="thumbnail-container" class="flex-grow flex items-center gap-3 overflow-x-auto pb-2">
                                     <!-- Miniaturas geradas pelo JS -->
@@ -227,6 +232,12 @@
             <p class="text-sm mt-2">Uma oportunidade imobiliária em Gaspar, SC.</p>
         </div>
     </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden items-center justify-center p-4">
+        <span id="lightbox-close" class="absolute top-4 right-6 text-white text-5xl font-bold cursor-pointer transition-transform hover:scale-110">&times;</span>
+        <img id="lightbox-image" src="" alt="Imagem em tela cheia" class="max-w-full max-h-full rounded-lg">
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -356,25 +367,24 @@
             const thumbnailContainer = document.getElementById('thumbnail-container');
             const roomTitle = document.getElementById('room-title');
             const roomDescription = document.getElementById('room-description');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
 
             function updateGallery(roomId) {
                 const roomData = roomsData[roomId];
                 if (!roomData) return;
 
-                // Mostra o conteúdo da galeria
                 galleryPlaceholder.classList.add('hidden');
                 galleryContent.classList.remove('hidden');
                 galleryContent.classList.add('flex');
 
-                // Atualiza o título e a descrição
                 roomTitle.textContent = roomData.title;
                 roomDescription.textContent = roomData.description;
 
-                // Atualiza a imagem principal
                 mainImage.src = roomData.images[0];
                 mainImage.alt = `Foto principal de ${roomData.title}`;
 
-                // Popula as miniaturas
                 thumbnailContainer.innerHTML = '';
                 roomData.images.forEach((imgSrc, index) => {
                     const thumb = document.createElement('img');
@@ -392,13 +402,11 @@
             // Popula os menus (Desktop e Mobile)
             Object.keys(roomsData).forEach(roomId => {
                 const room = roomsData[roomId];
-                // Menu Desktop
                 const li = document.createElement('li');
                 li.textContent = room.title;
                 li.className = 'room-menu-item';
                 li.dataset.roomId = roomId;
                 roomMenu.appendChild(li);
-                // Menu Mobile
                 const option = document.createElement('option');
                 option.value = roomId;
                 option.textContent = room.title;
@@ -411,7 +419,7 @@
                     const roomId = e.target.dataset.roomId;
                     document.querySelectorAll('.room-menu-item').forEach(item => item.classList.remove('active'));
                     e.target.classList.add('active');
-                    roomSelect.value = roomId; // Sincroniza com o select
+                    roomSelect.value = roomId;
                     updateGallery(roomId);
                 }
             });
@@ -428,16 +436,37 @@
             // Listener para as miniaturas
             thumbnailContainer.addEventListener('click', (e) => {
                 if (e.target && e.target.matches('img.thumbnail')) {
-                    const activeMenuItem = document.querySelector('.room-menu-item.active');
+                    const activeMenuItem = document.querySelector('.room-menu-item.active, option:checked');
                     if (!activeMenuItem) return;
 
-                    const roomId = activeMenuItem.dataset.roomId;
+                    const roomId = activeMenuItem.dataset.roomId || activeMenuItem.value;
                     const roomData = roomsData[roomId];
                     const index = parseInt(e.target.dataset.index, 10);
 
                     mainImage.src = roomData.images[index];
                     thumbnailContainer.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
                     e.target.classList.add('active');
+                }
+            });
+            
+            // --- LÓGICA DO LIGHTBOX ---
+            mainImage.addEventListener('click', () => {
+                if(mainImage.src){
+                    lightboxImage.src = mainImage.src;
+                    lightbox.classList.remove('hidden');
+                    lightbox.classList.add('flex');
+                }
+            });
+
+            function closeLightbox() {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+            }
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
                 }
             });
         });
