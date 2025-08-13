@@ -3,189 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casa + Ponto Comercial em Gaspar/SC | Oportunidade Única</title>
-    <meta name="description" content="Oportunidade de morar e empreender no mesmo endereço em Gaspar. Localização estratégica perto do Hospital, Policlínica e Fórum.">
-    
-    <!-- Tailwind CSS via CDN -->
+    <title>Oportunidade incrível | Imóvel em Gaspar, SC</title>
+    <meta name="description" content="Explore uma oportunidade única em Gaspar através de uma experiência interativa. Um imóvel com residência e ponto comercial, cheio de história e potencial.">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Inter -->
+
+    <!-- Google Fonts: Playfair Display & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
     <style>
-        /* Aplicando a fonte Inter como padrão */
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
         }
-        /* Efeito de scroll suave */
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
         html {
             scroll-behavior: smooth;
         }
+        .ken-burns {
+            animation: kenburns 20s ease-out infinite;
+            transform-origin: center center;
+        }
+        @keyframes kenburns {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Estilos do Menu de Ambientes */
+        .room-menu-item {
+            cursor: pointer;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: 500;
+            border: 1px solid transparent;
+        }
+        .room-menu-item:hover {
+            background-color: #e9ecef;
+        }
+        .room-menu-item.active {
+            background-color: #198754;
+            color: white;
+            font-weight: 700;
+            border-color: #146c43;
+        }
+
+        /* Estilos da Galeria de Miniaturas */
+        .thumbnail {
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 0.375rem;
+            transition: border-color 0.3s ease, opacity 0.3s ease;
+            opacity: 0.7;
+        }
+        .thumbnail:hover {
+            opacity: 1;
+        }
+        .thumbnail.active {
+            border-color: #198754;
+            opacity: 1;
+        }
+        
+        /* Estilos para o Header com Scroll */
+        .header-scrolled {
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .header-scrolled .nav-link {
+            color: #374151; /* text-gray-700 */
+        }
+         .header-scrolled .nav-link:hover {
+            color: #198754; /* text-green-600 */
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="text-gray-800">
 
     <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
-    <!-- IMPORTANTE: Substitua '5547999999999' pelo seu número com código do país e DDD -->
-    <a href="https://wa.me/5547999691729?text=Ol%C3%A1%21+Tenho+interesse+no+im%C3%B3vel+em+Gaspar." 
+    <a href="https://wa.me/5547999691729?text=Ol%C3%A1%21+Vi+o+site+interativo+e+tenho+interesse+no+im%C3%B3vel." 
        target="_blank" 
-       class="fixed bottom-5 right-5 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-transform transform hover:scale-110">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+       class="fixed bottom-6 right-6 z-50 bg-green-600 text-white p-4 rounded-full shadow-2xl hover:bg-green-700 transition-all transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.31 20.62C8.75 21.41 10.36 21.82 12.04 21.82C17.5 21.82 21.95 17.37 21.95 11.91C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM17.46 15.53C17.21 15.81 16.51 16.22 16.1 16.27C15.69 16.31 15.14 16.32 14.77 16.18C14.4 16.03 13.62 15.75 12.68 14.88C11.56 13.85 10.87 12.61 10.71 12.33C10.56 12.05 10.45 11.82 10.6 11.62C10.76 11.42 10.96 11.22 11.16 11.02C11.33 10.84 11.43 10.72 11.53 10.52C11.62 10.32 11.57 10.14 11.52 10.04C11.47 9.94 10.86 8.41 10.61 7.8C10.36 7.19 10.11 7.29 9.95 7.29C9.79 7.29 9.61 7.29 9.43 7.29C9.26 7.29 9.01 7.34 8.79 7.59C8.57 7.84 7.91 8.44 7.91 9.61C7.91 10.78 8.81 11.9 8.96 12.05C9.11 12.2 10.62 14.54 12.87 15.48C13.28 15.66 13.61 15.77 13.86 15.85C14.34 16.02 14.96 15.99 15.4 15.9C15.88 15.81 16.92 15.22 17.21 14.93C17.5 14.64 17.5 14.24 17.46 14.14C17.41 14.04 17.21 13.94 17.46 15.53Z"/></svg>
     </a>
 
     <!-- CABEÇALHO -->
-    <header class="bg-white shadow-md sticky top-0 z-40">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-gray-800">
-                <a href="#">Imóvel em Gaspar</a>
-            </div>
-            <div class="hidden md:flex space-x-6">
-                <a href="#fotos" class="text-gray-600 hover:text-green-600">Fotos</a>
-                <a href="#detalhes" class="text-gray-600 hover:text-green-600">Detalhes</a>
-                <a href="#localizacao" class="text-gray-600 hover:text-green-600">Localização</a>
-                <a href="#contato" class="bg-green-500 text-white font-bold py-2 px-5 rounded-lg hover:bg-green-600 transition-colors">Fale Conosco</a>
+    <header id="header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-5 flex justify-end items-center">
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#tour" class="nav-link text-white opacity-80 hover:opacity-100 font-medium transition-colors">Tour Interativo</a>
+                <a href="#legado" class="nav-link text-white opacity-80 hover:opacity-100 font-medium transition-colors">O Legado</a>
+                <a href="#contato" class="bg-white text-gray-800 font-bold py-2 px-6 rounded-full hover:bg-gray-200 transition-all transform hover:scale-105">
+                    Agendar Visita
+                </a>
             </div>
         </nav>
     </header>
 
-    <!-- SEÇÃO HERO (PRINCIPAL) -->
     <main>
-        <section class="relative text-center text-white">
-            <!-- IMPORTANTE: Substitua a URL da imagem principal -->
-            <img src="https://i.ibb.co/qFsTC1hJ/IMG-4915.jpg" 
-                 alt="Fachada do imóvel em Gaspar" 
-                 class="w-full h-[60vh] md:h-[80vh] object-cover">
-            <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-6">
-                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Sua Nova Vida e Negócio Começam Aqui</h1>
-                <p class="text-lg md:text-2xl max-w-3xl mb-8">Sua oportunidade para morar, investir e empreender em um único endereço estratégico em Gaspar, SC.</p>
-                <a href="#contato" class="bg-green-500 text-white font-bold py-4 px-10 rounded-lg text-lg hover:bg-green-600 transition-transform transform hover:scale-105">
-                    Quero Agendar uma Visita
+        <!-- SEÇÃO HERO -->
+        <section class="relative h-screen flex items-center justify-center text-center text-white">
+            <div class="absolute inset-0 bg-black z-0">
+                <img src="https://i.ibb.co/4RfPSHKk/fachada-imovel.jpg" alt="Fachada do imóvel em Gaspar" class="w-full h-full object-cover opacity-50 ken-burns">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
+            <div class="relative z-20 flex flex-col items-center p-6">
+                <h1 class="font-serif text-5xl md:text-7xl font-extrabold mb-4 leading-tight">Viva a História. Construa o Futuro.</h1>
+                <p class="text-lg md:text-xl max-w-3xl mb-8 text-gray-200">Em Gaspar, um imóvel que une o legado de uma família à sua visão de futuro. More, trabalhe e invista em um só lugar.</p>
+                <a href="#tour" class="bg-green-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-green-700 transition-transform transform hover:scale-105 shadow-lg">
+                    Iniciar Tour Interativo
                 </a>
             </div>
         </section>
 
-        <!-- SEÇÃO DE DESTAQUES -->
-        <section class="py-16 bg-white">
+        <!-- SEÇÃO TOUR INTERATIVO -->
+        <section id="tour" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">Explore Cada Ambiente</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Selecione um cômodo no menu à esquerda para ver a galeria de fotos e os detalhes.</p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-10 lg:gap-16">
+                    <!-- Coluna do Menu de Ambientes -->
+                    <div class="w-full lg:w-1/3">
+                        <div class="sticky top-24">
+                            <h3 class="font-bold text-xl mb-4 text-gray-700">Navegue pelos Ambientes</h3>
+                            <ul id="room-menu" class="space-y-2">
+                                <!-- Itens do menu serão gerados pelo JS -->
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Coluna da Galeria e Detalhes -->
+                    <div class="w-full lg:w-2/3">
+                        <div id="gallery-area" class="bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200 min-h-[500px] flex flex-col">
+                            <div id="gallery-placeholder" class="text-center m-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-gray-400 mb-4"><path d="M2.5 7.5L5 9.5L7.5 7.5"/><path d="M2.5 16.5L5 18.5L7.5 16.5"/><path d="M10 5.5v13"/><path d="M16.5 2.5L14.5 5L16.5 7.5"/><path d="M16.5 16.5L14.5 19L16.5 21.5"/><path d="M21.5 7.5L19 9.5L16.5 7.5"/><path d="M21.5 16.5L19 18.5L16.5 16.5"/></svg>
+                                <h3 class="font-bold text-xl text-gray-700">Bem-vindo ao Tour</h3>
+                                <p class="text-gray-500">Selecione um ambiente no menu para começar.</p>
+                            </div>
+                            <div id="gallery-content" class="hidden flex-grow flex-col">
+                                <!-- Imagem Principal -->
+                                <img id="main-image" src="" alt="Foto do ambiente selecionado" class="w-full h-80 object-cover rounded-lg mb-4">
+                                <!-- Miniaturas -->
+                                <div id="thumbnail-container" class="flex-grow flex items-center gap-3 overflow-x-auto pb-2">
+                                    <!-- Miniaturas geradas pelo JS -->
+                                </div>
+                                <!-- Descrição -->
+                                <div class="mt-6 pt-6 border-t border-gray-200">
+                                    <h3 id="room-title" class="font-serif text-3xl font-bold mb-2"></h3>
+                                    <p id="room-description" class="text-gray-600"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO LEGADO -->
+        <section id="legado" class="py-24 bg-green-800 text-white">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold mb-12">Uma Oportunidade, Múltiplas Possibilidades</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <div class="flex flex-col items-center">
-                        <div class="bg-green-100 p-4 rounded-full mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Localização Estratégica</h3>
-                        <p class="text-gray-600">Ao lado do Hospital, Policlínica e Fórum. Fluxo constante de pessoas e fácil acesso.</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="bg-green-100 p-4 rounded-full mb-4">
-                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Versatilidade Total</h3>
-                        <p class="text-gray-600">Ideal para moradia, renda com aluguel, consultórios, escritórios, clínicas ou varejo.</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="bg-green-100 p-4 rounded-full mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><path d="M12 21v-5.172a2 2 0 0 0-.586-1.414L5.414 8.414A2 2 0 0 1 5 7V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2a2 2 0 0 1-.414 1.414L12.586 14.414A2 2 0 0 0 12 15.828V21z"/><path d="M5 21h14"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Renda Garantida</h3>
-                        <p class="text-gray-600">O espaço comercial térreo já está locado, com opção de manter o inquilino atual.</p>
-                    </div>
-                </div>
+                 <div class="max-w-3xl mx-auto">
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6">Um Legado de Cuidado e Carinho</h2>
+                    <p class="text-lg text-green-200 mb-4">
+                        Este não é apenas um imóvel. É o lar onde nossos avós construíram uma vida, cada tijolo assentado com amor e dedicação. Um lugar de encontros, risadas e memórias que agora busca uma nova família para continuar sua história.
+                    </p>
+                 </div>
             </div>
         </section>
-
-        <!-- GALERIA DE FOTOS -->
-        <section id="fotos" class="py-16 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12">Conheça Cada Detalhe</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- IMPORTANTE: Substitua as URLs das imagens. Adicione mais se precisar. -->
-                    <img src="https://i.ibb.co/xqVZMWkZ/IMG-4914.jpg?text=Espa%C3%A7o+Comercial+(Frente)" alt="Espaço comercial" class="rounded-lg shadow-lg w-full h-64 object-cover hover:scale-105 transition-transform">
-                    <img src="https://i.ibb.co/YTQvymbR/IMG-4887.jpg?text=Sala+de+Estar" alt="Sala de estar da residência" class="rounded-lg shadow-lg w-full h-64 object-cover hover:scale-105 transition-transform">
-                    <img src="https://i.ibb.co/TDM5GrVg/IMG-4881.jpg?text=Cozinha" alt="Cozinha da residência" class="rounded-lg shadow-lg w-full h-64 object-cover hover:scale-105 transition-transform">
-                    <img src="https://i.ibb.co/Cshhmt5y/IMG-4895.jpg?text=Dormit%C3%B3rio" alt="Dormitório da residência" class="rounded-lg shadow-lg w-full h-64 object-cover hover:scale-105 transition-transform">
-                    <img src="https://i.ibb.co/mYqkJq7/IMG-4877.jpg?text=%C3%81rea+de+Festas" alt="Área de festas com churrasqueira" class="rounded-lg shadow-lg w-full h-64 object-cover hover:scale-105 transition-transform">
-                    <img src="https://i.ibb.co/9kJhQzSL/IMG-4899.jpg?text=Vista+da+Varanda" alt="Vista da varanda" class="rounded-lg shadow-lg w-full h-64 object-cover hover:scale-105 transition-transform">
-                </div>
-            </div>
-        </section>
-
-        <!-- DETALHES DO IMÓVEL -->
-        <section id="detalhes" class="py-16 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <!-- Coluna da Residência -->
-                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
-                        <h3 class="text-2xl font-bold mb-6">Residência Aconchegante (~236 m²)</h3>
-                        <ul class="space-y-3 text-gray-700">
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>3 Dormitórios</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Cozinha</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Sala de Jantar</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Sala de Estar + Sala de TV</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>2 Banheiros</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>2 Vagas de Garagem</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Varanda, Área de Serviço e Churrasqueira</li>
-                        </ul>
-                    </div>
-                    <!-- Coluna do Espaço Comercial -->
-                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
-                        <h3 class="text-2xl font-bold mb-6">Espaço Comercial Amplo (~154 m²)</h3>
-                        <ul class="space-y-3 text-gray-700">
-                           <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Sala ampla e versátil</li>
-                           <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>2 Banheiros</li>
-                           <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Ideal para recepção, showroom ou escritórios</li>
-                           <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Potencial para clínicas e coworking</li>
-                           <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Pavimento térreo atualmente locado</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEÇÃO DE LOCALIZAÇÃO -->
-        <section id="localizacao" class="py-16 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12">No Coração dos Serviços de Gaspar</h2>
-                <div class="w-full h-96 rounded-lg shadow-lg overflow-hidden">
-                    <!-- Mapa do Google Maps -->
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.882195047875!2d-48.9610186237691!3d-26.71618337676602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94df466a9c72c9a9%3A0xe5433069c97b253b!2sR.%20Jo%C3%A3o%20Silvino%20da%20Cunha%20-%20Sete%20de%20Setembro%2C%20Gaspar%20-%20SC%2C%2089114-810!5e0!3m2!1spt-BR!2sbr!4v1723140508732!5m2!1spt-BR!2sbr" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-                <p class="text-center mt-4 text-gray-600">Endereço: Rua João Silvino da Cunha, Bairro Sete de Setembro, Gaspar – SC, 89114-810</p>
-            </div>
-        </section>
-
-        <!-- SEÇÃO DE CONTATO (CTA FINAL) -->
-        <section id="contato" class="py-20 bg-green-700 text-white">
+        
+        <!-- SEÇÃO DE CONTATO FINAL -->
+        <section id="contato" class="py-24 bg-white">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-extrabold mb-4">Gostou? Vamos Conversar.</h2>
-                <p class="text-lg text-green-100 max-w-2xl mx-auto mb-8">Agende sua visita e veja pessoalmente como este imóvel se adapta ao seu plano de morar e empreender. Analisamos propostas com imóveis na troca.</p>
-                <!-- IMPORTANTE: Substitua '5547999999999' pelo seu número -->
-                <a href="https://wa.me/5547999691729?text=Ol%C3%A1%21+Gostaria+de+agendar+uma+visita+ao+im%C3%B3vel+em+Gaspar." 
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">Pronto para o Próximo Capítulo?</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10">A melhor forma de conhecer é sentindo a atmosfera do lugar. Agende sua visita e venha pessoalmente descobrir seu futuro.</p>
+                <a href="https://wa.me/5547999691729?text=Ol%C3%A1%21+Explorei+o+site+e+gostaria+de+agendar+uma+visita." 
                    target="_blank"
-                   class="bg-white text-green-700 font-bold py-4 px-10 rounded-lg text-lg hover:bg-gray-200 transition-transform transform hover:scale-105 inline-block">
-                    Falar no WhatsApp Agora
+                   class="bg-green-600 text-white font-bold py-4 px-12 rounded-full text-xl hover:bg-green-700 transition-transform transform hover:scale-105 shadow-lg inline-block">
+                    Falar sobre o imóvel
                 </a>
+                <p class="mt-6 text-gray-500">Analisamos propostas, incluindo imóveis de menor valor.</p>
             </div>
         </section>
     </main>
 
     <!-- RODAPÉ -->
-    <footer class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto px-6 text-center">
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center text-gray-400">
             <p>&copy; 2024 schmidtnow.com - Todos os direitos reservados.</p>
-            <p class="text-sm text-gray-400 mt-2">Uma oportunidade imobiliária em Gaspar, SC.</p>
+            <p class="text-sm mt-2">Uma oportunidade imobiliária em Gaspar, SC.</p>
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- LÓGICA DO HEADER COM SCROLL ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+
+            // --- BANCO DE DADOS DOS CÔMODOS E FOTOS ---
+            const roomsData = {
+                'fachada': {
+                    title: 'Fachada',
+                    description: 'A fachada completa do imóvel, mostrando a integração entre a residência no piso superior e a área comercial no térreo.',
+                    images: ['https://i.ibb.co/4RfPSHKk/fachada-imovel.jpg']
+                },
+                'area-comercial': {
+                    title: 'Área Comercial',
+                    description: 'Espaço amplo no térreo, com banheiro. Ideal para clínicas, escritórios ou varejo. Atualmente locado, gerando renda imediata.',
+                    images: ['https://i.ibb.co/x8S56sqL/area-comercial.jpg']
+                },
+                'garagem': {
+                    title: 'Garagem',
+                    description: 'Duas vagas de garagem cobertas, oferecendo segurança e praticidade para o dia a dia.',
+                    images: [
+                        'https://i.ibb.co/jvwQr8Jd/garagem.jpg',
+                        'https://i.ibb.co/TBV8Dz82/garagem-visao-lateral.jpg'
+                    ]
+                },
+                'area-festa': {
+                    title: 'Área de Festas',
+                    description: 'Ambiente com churrasqueira, perfeito para confraternizações e para criar novas memórias em família.',
+                    images: ['https://i.ibb.co/dJGhNTKM/area-de-festas.jpg']
+                },
+                'sala-estar': {
+                    title: 'Sala de Estar',
+                    description: 'Um espaço aconchegante para relaxar e receber visitas, parte de um ambiente integrado e espaçoso.',
+                    images: ['https://i.ibb.co/sddFc6TF/Sala-de-Estar.jpg']
+                },
+                'sala-jantar-tv': {
+                    title: 'Sala de Jantar e TV',
+                    description: 'Área dedicada para as refeições e entretenimento, conectada aos demais ambientes sociais da casa.',
+                    images: [
+                        'https://i.ibb.co/hxqDr4GM/sala-de-jantar-e-tv.jpg',
+                        'https://i.ibb.co/WNy24DMW/sala-de-jantar-e-tv-visao-lateral.jpg'
+                    ]
+                },
+                'cozinha': {
+                    title: 'Cozinha e Corredor',
+                    description: 'Cozinha funcional com acesso fácil aos outros cômodos através de um corredor bem iluminado.',
+                     images: [
+                        'https://i.ibb.co/pj1kwr9g/cozinha-01.jpg',
+                        'https://i.ibb.co/7drTLvDj/cozinha-02.jpg',
+                        'https://i.ibb.co/FCR4jH2/entrada-cozinha.jpg',
+                        'https://i.ibb.co/wNNKMh5L/corredor.jpg'
+                    ]
+                },
+                'varanda': {
+                    title: 'Varanda',
+                    description: 'Uma varanda espaçosa com uma vista relaxante da vizinhança, ideal para o café da manhã ou para descansar no fim da tarde.',
+                    images: [
+                        'https://i.ibb.co/dJf9Nt2V/varanda-foto-01.jpg',
+                        'https://i.ibb.co/N86Gdhp/varanda-foto-02.jpg',
+                        'https://i.ibb.co/DZTjY5S/frente-varanda.jpg'
+                    ]
+                },
+                'quarto1': {
+                    title: 'Dormitório 1',
+                    description: 'Um dos três dormitórios espaçosos, garantindo conforto e privacidade para toda a família.',
+                    images: ['https://i.ibb.co/x8HTR5Rx/quarto-01.jpg']
+                },
+                'quarto2': {
+                    title: 'Dormitório 2',
+                    description: 'Confortável e bem iluminado, perfeito para filhos, hóspedes ou como um escritório particular.',
+                    images: ['https://i.ibb.co/xqj6hJHD/quarto-02.jpg']
+                },
+                'quarto3': {
+                    title: 'Dormitório 3',
+                    description: 'Mais um quarto versátil que se adapta às suas necessidades, seja para descanso ou trabalho.',
+                    images: ['https://i.ibb.co/k6KQy2YX/quarto-03.jpg']
+                },
+                'banheiro-interno': {
+                    title: 'Banheiro Interno',
+                    description: 'A residência conta com 2 banheiros completos para atender a família com conforto.',
+                    images: [
+                        'https://i.ibb.co/67kbbWHs/banheiro-interno-01.jpg',
+                        'https://i.ibb.co/93266HpY/banheiro-interno-02.jpg'
+                    ]
+                },
+                'lavacao': {
+                    title: 'Área de Serviço / Lavação',
+                    description: 'Espaço funcional para as tarefas domésticas, com área coberta para varal.',
+                    images: [
+                        'https://i.ibb.co/hRg0pLGw/lavacao.jpg',
+                        'https://i.ibb.co/Xx8PLnZf/lavacao-varal.jpg'
+                    ]
+                },
+                'banheiro-externo': {
+                    title: 'Banheiro Externo',
+                    description: 'Um banheiro de apoio para a área comercial ou para eventos na área de festas.',
+                    images: ['https://i.ibb.co/N29KBpZX/banheiro-externo.jpg']
+                }
+            };
+
+            // --- LÓGICA DA GALERIA INTERATIVA ---
+            const roomMenu = document.getElementById('room-menu');
+            const galleryPlaceholder = document.getElementById('gallery-placeholder');
+            const galleryContent = document.getElementById('gallery-content');
+            const mainImage = document.getElementById('main-image');
+            const thumbnailContainer = document.getElementById('thumbnail-container');
+            const roomTitle = document.getElementById('room-title');
+            const roomDescription = document.getElementById('room-description');
+
+            // Popula o menu de ambientes
+            Object.keys(roomsData).forEach(roomId => {
+                const room = roomsData[roomId];
+                const li = document.createElement('li');
+                li.textContent = room.title;
+                li.className = 'room-menu-item';
+                li.dataset.roomId = roomId;
+                roomMenu.appendChild(li);
+            });
+
+            // Adiciona o listener de evento ao menu
+            roomMenu.addEventListener('click', (e) => {
+                if (e.target && e.target.matches('li.room-menu-item')) {
+                    const roomId = e.target.dataset.roomId;
+                    const roomData = roomsData[roomId];
+                    
+                    // Atualiza o estado ativo do menu
+                    document.querySelectorAll('.room-menu-item').forEach(item => item.classList.remove('active'));
+                    e.target.classList.add('active');
+
+                    // Mostra o conteúdo da galeria
+                    galleryPlaceholder.classList.add('hidden');
+                    galleryContent.classList.remove('hidden');
+                    galleryContent.classList.add('flex');
+
+                    // Atualiza o título e a descrição
+                    roomTitle.textContent = roomData.title;
+                    roomDescription.textContent = roomData.description;
+
+                    // Atualiza a imagem principal
+                    mainImage.src = roomData.images[0];
+                    mainImage.alt = `Foto principal de ${roomData.title}`;
+
+                    // Popula as miniaturas
+                    thumbnailContainer.innerHTML = '';
+                    roomData.images.forEach((imgSrc, index) => {
+                        const thumb = document.createElement('img');
+                        thumb.src = imgSrc;
+                        thumb.alt = `Miniatura ${index + 1} de ${roomData.title}`;
+                        thumb.className = 'thumbnail h-16 w-auto flex-shrink-0';
+                        if (index === 0) {
+                            thumb.classList.add('active');
+                        }
+                        thumb.dataset.index = index;
+                        thumbnailContainer.appendChild(thumb);
+                    });
+                }
+            });
+
+            // Adiciona o listener de evento ao container de miniaturas
+            thumbnailContainer.addEventListener('click', (e) => {
+                if (e.target && e.target.matches('img.thumbnail')) {
+                    const activeMenuItem = document.querySelector('.room-menu-item.active');
+                    if (!activeMenuItem) return;
+
+                    const roomId = activeMenuItem.dataset.roomId;
+                    const roomData = roomsData[roomId];
+                    const index = parseInt(e.target.dataset.index, 10);
+
+                    // Atualiza a imagem principal
+                    mainImage.src = roomData.images[index];
+
+                    // Atualiza o estado ativo da miniatura
+                    thumbnailContainer.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+                    e.target.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
